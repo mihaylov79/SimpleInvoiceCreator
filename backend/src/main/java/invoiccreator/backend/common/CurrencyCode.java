@@ -1,5 +1,17 @@
 package invoiccreator.backend.common;
 
 public enum CurrencyCode {
-    EUR, BGN, USD
+    EUR ("€"),
+    BGN ("лв"),
+    USD ("$");
+
+    private String symbol;
+
+    CurrencyCode(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
 }
