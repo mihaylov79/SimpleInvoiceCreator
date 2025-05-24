@@ -1,12 +1,14 @@
-package invoiccreator.backend.invoice;
+package invoiccreator.backend.invoice.model;
 
 import invoiccreator.backend.book.model.InvoiceBook;
-import invoiccreator.backend.company.Company;
+import invoiccreator.backend.company.model.Company;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -28,11 +30,18 @@ public class Invoice {
     @Enumerated(EnumType.STRING)
     private InvoiceType invoiceType;
 
+    @Column(name = "base_currency_code")
+    private String baseCurrencyCode;  // напр. "EUR", "USD" и т.н.
+
+    @Column(name = "total_sum_in_base_currency")
+    private BigDecimal totalSumInBaseCurrency;
+
+
     @Column
     private String currency;
 
     @Column(name = "total")
-    private String totalAmount;
+    private BigDecimal totalAmount;
 
     @ManyToOne
     @JoinColumn(name = "bill_to_id", nullable = false)

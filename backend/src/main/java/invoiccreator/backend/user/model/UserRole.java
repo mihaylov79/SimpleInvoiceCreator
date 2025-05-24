@@ -1,4 +1,4 @@
-package invoiccreator.backend.user;
+package invoiccreator.backend.user.model;
 
 public enum UserRole {
     USER("Служител"),

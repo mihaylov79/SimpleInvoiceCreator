@@ -1,6 +1,6 @@
 package invoiccreator.backend.book.model;
 
-import invoiccreator.backend.invoice.Invoice;
+import invoiccreator.backend.invoice.model.Invoice;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,4 +1,4 @@
-package invoiccreator.backend.invoice;
+package invoiccreator.backend.invoice.model;
 
 public enum InvoiceType {
     INVOICE("Фактура"),

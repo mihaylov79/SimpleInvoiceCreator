@@ -1,8 +1,7 @@
-package invoiccreator.backend.user;
+package invoiccreator.backend.user.model;
 
-import invoiccreator.backend.company.Company;
+import invoiccreator.backend.company.model.Company;
 import jakarta.persistence.*;
-import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
