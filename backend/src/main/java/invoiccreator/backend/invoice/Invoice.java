@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.awt.print.Book;
 import java.util.UUID;
 
 @Entity
@@ -29,6 +27,12 @@ public class Invoice {
     @Column(name = "invoice_type",nullable = false)
     @Enumerated(EnumType.STRING)
     private InvoiceType invoiceType;
+
+    @Column
+    private String currency;
+
+    @Column(name = "total")
+    private String totalAmount;
 
     @ManyToOne
     @JoinColumn(name = "bill_to_id", nullable = false)
