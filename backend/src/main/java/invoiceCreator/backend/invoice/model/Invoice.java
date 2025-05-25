@@ -1,6 +1,7 @@
 package invoiceCreator.backend.invoice.model;
 
 import invoiceCreator.backend.book.model.InvoiceBook;
+import invoiceCreator.backend.common.CurrencyCode;
 import invoiceCreator.backend.company.model.Company;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,14 +32,16 @@ public class Invoice {
     private InvoiceType invoiceType;
 
     @Column(name = "base_currency_code")
-    private String baseCurrencyCode;  // напр. "EUR", "USD" и т.н.
+    @Enumerated(EnumType.STRING)
+    private CurrencyCode baseCurrencyCode;  // напр. "EUR", "USD" и т.н.
 
     @Column(name = "total_sum_in_base_currency")
     private BigDecimal totalSumInBaseCurrency;
 
 
     @Column
-    private String currency;
+    @Enumerated(EnumType.STRING)
+    private CurrencyCode currency;
 
     @Column(name = "total")
     private BigDecimal totalAmount;
