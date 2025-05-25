@@ -1,6 +1,6 @@
-package invoiccreator.backend.user.model;
+package invoiceCreator.backend.user.model;
 
-import invoiccreator.backend.company.model.Company;
+import invoiceCreator.backend.company.model.Company;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

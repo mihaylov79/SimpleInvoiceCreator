@@ -1,4 +1,4 @@
-package invoiccreator.backend.strategy.model;
+package invoiceCreator.backend.strategy.service;
 
 import java.math.BigDecimal;
 

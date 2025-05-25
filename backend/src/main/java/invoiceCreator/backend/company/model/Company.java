@@ -1,7 +1,7 @@
-package invoiccreator.backend.company.model;
+package invoiceCreator.backend.company.model;
 
-import invoiccreator.backend.invoice.model.Invoice;
-import invoiccreator.backend.user.model.User;
+import invoiceCreator.backend.invoice.model.Invoice;
+import invoiceCreator.backend.user.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

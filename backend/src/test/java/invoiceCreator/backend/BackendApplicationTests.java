@@ -1,4 +1,4 @@
-package invoiccreator.backend;
+package invoiceCreator.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package invoiccreator.backend.common;
+package invoiceCreator.backend.common;
 
 public enum CurrencyCode {
     EUR ("€"),
