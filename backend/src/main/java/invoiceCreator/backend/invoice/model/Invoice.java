@@ -31,7 +31,7 @@ public class Invoice {
     @Enumerated(EnumType.STRING)
     private InvoiceType invoiceType;
 
-    @Column(name = "base_currency_code")
+    @Column(name = "base_currency_code", nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyCode baseCurrencyCode;  // напр. "EUR", "USD" и т.н.
 
