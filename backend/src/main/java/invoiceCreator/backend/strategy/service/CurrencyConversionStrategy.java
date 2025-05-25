@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public interface CurrencyConversionStrategy {
 
-    BigDecimal converter(BigDecimal amount , CurrencyCode targetCurrency );
+    BigDecimal convert(BigDecimal amount , CurrencyCode targetCurrency );
 
 //    String getCurrencyCode();
 }

@@ -25,16 +25,17 @@ public class CurrencyConversionStrategyImpl implements CurrencyConversionStrateg
 
 
     @Override
-    public BigDecimal converter(BigDecimal amount, CurrencyCode targetCurrency) {
+    public BigDecimal convert(BigDecimal amount, CurrencyCode targetCurrency) {
 
         CurrencyCode base = appProperties.getBaseCurrency();
 
-        if (targetCurrency == base) {
+        if (targetCurrency.equals(base)) {
             return amount;
         }
 
+        CurrencyRate rate = rateRepository.findByBaseCurrencyAndTargetCurrency(base,targetCurrency)
+                                   .orElseThrow(() -> new RuntimeException("фиксингът не е открит"));
 
-
-        return null;
+        return amount.multiply(rate.getRate());
     }
 }
