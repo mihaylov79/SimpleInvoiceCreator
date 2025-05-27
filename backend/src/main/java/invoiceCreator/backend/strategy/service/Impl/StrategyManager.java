@@ -3,7 +3,6 @@ package invoiceCreator.backend.strategy.service.Impl;
 
 import invoiceCreator.backend.common.CurrencyCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

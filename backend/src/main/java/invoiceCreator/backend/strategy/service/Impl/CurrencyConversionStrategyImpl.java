@@ -6,11 +6,11 @@ import invoiceCreator.backend.currencyRate.model.CurrencyRate;
 import invoiceCreator.backend.currencyRate.repository.CurrencyRateRepository;
 import invoiceCreator.backend.strategy.service.CurrencyConversionStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-@Component
+@Service
 public class CurrencyConversionStrategyImpl implements CurrencyConversionStrategy {
 
     private final CurrencyRateRepository rateRepository;
