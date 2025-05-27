@@ -22,7 +22,7 @@ public class Item {
     @Column
     private String name;
 
-    @Column
+    @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
 }

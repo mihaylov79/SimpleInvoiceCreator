@@ -3,6 +3,7 @@ package invoiceCreator.backend.invoice.model;
 import invoiceCreator.backend.book.model.InvoiceBook;
 import invoiceCreator.backend.common.CurrencyCode;
 import invoiceCreator.backend.company.model.Company;
+import invoiceCreator.backend.invoiceLine.model.InvoiceLine;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -58,5 +61,8 @@ public class Invoice {
     @ManyToOne
     @JoinColumn(name = "book_number_id")
     private InvoiceBook bookNumber;
+
+    @OneToMany(mappedBy = "invoice")
+    List<InvoiceLine>lines = new ArrayList<>();
 
 }
