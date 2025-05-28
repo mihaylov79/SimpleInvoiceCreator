@@ -32,7 +32,7 @@ public class User {
     @JoinColumn(name = "employer_company_id")
     private Company employerCompany;
 
-    @OneToMany(mappedBy = "responsiblePerson")
+    @OneToMany(mappedBy = "owner")
     private List<Company> ownedCompanies = new ArrayList<>();
 
 }

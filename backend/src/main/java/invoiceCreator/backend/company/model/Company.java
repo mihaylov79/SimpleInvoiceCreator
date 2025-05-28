@@ -36,9 +36,19 @@ public class Company {
     @Column
     private String address;
 
+    @Column(name = "responsible_person", nullable = false)
+    private String responsiblePerson;
 
     @ManyToOne
-    private User responsiblePerson; //МОЛ - на фирмата
+    private User owner; //МОЛ - на фирмата
+
+
+    //TODO - трябва ли да имам би-дирекшънъл релация за счетоводителя!
+    // - задължително ли е счетоводителят да фигурира в базата!
+    // - дали не е по-добре да имам счетоводство (фирма)
+    @ManyToOne
+    @JoinColumn(name = "accountant_id")
+    private User accountant;
 
     @Column
     private String bank;
@@ -57,5 +67,9 @@ public class Company {
 
     @OneToMany(mappedBy = "payTo")
     private List<Invoice> outgoingInvoices = new ArrayList<>();
+
+    public void setAccountant(User accountant) {
+        this.accountant = accountant;
+    }
 
 }
