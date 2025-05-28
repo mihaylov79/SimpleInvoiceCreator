@@ -11,11 +11,12 @@ public class CreateCompanyRequest {
     private String homeTown;
 
     private String address;
-    //TODO Да помисля как да вземам МОЛ-а
-    // - дали искам от юзъра String и да търся в репозиторито
-    // - или да подам падащо меню със съществуващи клиенти!
-    // - не е задължително МОЛ-а да е регистриран във нашият Софтуер!
-    private User responsiblePerson; //МОЛ - на фирмата
+
+    private String responsiblePerson;//МОЛ - на фирмата
+
+    private User owner;
+
+    private User accountant;
 
     private String bank;
 
