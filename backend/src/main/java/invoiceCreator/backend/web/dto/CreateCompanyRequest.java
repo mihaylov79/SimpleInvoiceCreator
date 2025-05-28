@@ -1,7 +1,9 @@
 package invoiceCreator.backend.web.dto;
 
 import invoiceCreator.backend.user.model.User;
+import lombok.Data;
 
+@Data
 public class CreateCompanyRequest {
 
     private String CompanyName;

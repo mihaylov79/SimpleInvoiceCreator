@@ -1,5 +1,6 @@
 package invoiceCreator.backend.company.service;
 
+import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.company.repository.CompanyRepository;
 import invoiceCreator.backend.web.dto.CreateCompanyRequest;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,21 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public void createNewCompany(CreateCompanyRequest request) {
+        Company company = Company.builder()
+                .companyName(request.getCompanyName())
+                .EIK(request.getEIK())
+                .homeTown(request.getHomeTown())
+                .address(request.getAddress())
+                .responsiblePerson(request.getResponsiblePerson())
+                .owner(request.getOwner())
+                .accountant(request.getAccountant())
+                .bank(request.getBank())
+                .BIC(request.getBIC())
+                .IBAN(request.getIBAN())
+                .bankDepartment(request.getBankDepartment())
+                .build();
 
+        repository.save(company);
     }
 
     @Override

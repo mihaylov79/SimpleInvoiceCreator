@@ -70,8 +70,6 @@ public class Company {
     @OneToMany(mappedBy = "payTo")
     private List<Invoice> outgoingInvoices = new ArrayList<>();
 
-    public void setAccountant(User accountant) {
-        this.accountant = accountant;
-    }
+
 
 }
