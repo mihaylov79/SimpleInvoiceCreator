@@ -42,10 +42,12 @@ public class Company {
     @ManyToOne
     private User owner; //МОЛ - на фирмата
 
+    //Няма да има двупосочна връзка с user
+    // - ако е необходм списък с фирми ка счетоводителят ще ползвам:
+    //    if (user.getRoles().contains(Role.ACCOUNTANT)) {
+    //        List<Company> companies = companyRepository.findAllByAccountant(user);
+    //    }
 
-    //TODO - трябва ли да имам би-дирекшънъл релация за счетоводителя!
-    // - задължително ли е счетоводителят да фигурира в базата!
-    // - дали не е по-добре да имам счетоводство (фирма)
     @ManyToOne
     @JoinColumn(name = "accountant_id")
     private User accountant;
