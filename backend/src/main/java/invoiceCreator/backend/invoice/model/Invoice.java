@@ -49,6 +49,9 @@ public class Invoice {
     @Column(name = "total")
     private BigDecimal totalAmount;
 
+    @Column
+    private boolean paid;
+
     @ManyToOne
     @JoinColumn(name = "bill_to_id", nullable = false)
     private Company billTo;

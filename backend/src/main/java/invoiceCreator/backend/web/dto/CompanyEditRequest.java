@@ -5,11 +5,13 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Data
-public class CreateCompanyRequest {
+@Builder
+public class CompanyEditRequest {
 
     @NotBlank
     @Length(max = 60 , message = "Името не може да надвишава 60 символа")
@@ -18,6 +20,7 @@ public class CreateCompanyRequest {
     @NotBlank
     @Pattern(regexp = "//d{10}", message = "Полето трябва да съдържа 10 цифри")
     private String EIK;
+
 
     private boolean vatRegistered;
 
@@ -35,7 +38,7 @@ public class CreateCompanyRequest {
     private String contactEmail;
 
     @NotBlank
-    private String responsiblePerson;//МОЛ - на фирмата
+    private String responsiblePerson;
 
     private User owner;
 

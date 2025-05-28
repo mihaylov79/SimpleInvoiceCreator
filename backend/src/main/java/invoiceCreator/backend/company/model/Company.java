@@ -30,11 +30,20 @@ public class Company {
     @Column(nullable = false)
     private String EIK;
 
+    @Column
+    private boolean vatRegistered;
+
+    @Column
+    private String vatN;
+
     @Column(name = "town", nullable = false)
     private String homeTown;
 
     @Column
     private String address;
+
+    @Column
+    private String contactEmail;
 
     @Column(name = "responsible_person", nullable = false)
     private String responsiblePerson;
