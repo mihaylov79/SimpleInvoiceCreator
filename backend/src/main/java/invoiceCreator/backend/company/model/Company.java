@@ -17,7 +17,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class Company {
 
     @Id
@@ -41,6 +41,9 @@ public class Company {
 
     @Column
     private String address;
+
+    @Column
+    private boolean companyIsActive;
 
     @Column
     private String contactEmail;

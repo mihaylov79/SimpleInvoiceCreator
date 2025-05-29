@@ -6,6 +6,7 @@ import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.company.repository.CompanyRepository;
 import invoiceCreator.backend.web.dto.CompanyEditRequest;
 import invoiceCreator.backend.web.dto.CreateCompanyRequest;
+import invoiceCreator.backend.web.mapper.DTOMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -37,6 +38,7 @@ public class CompanyServiceImpl implements CompanyService{
                 .vatN(request.isVatRegistered() ? request.getVatN() : null)
                 .homeTown(request.getHomeTown())
                 .address(request.getAddress())
+                .companyIsActive(true)
                 .contactEmail(request.getContactEmail())
                 .responsiblePerson(request.getResponsiblePerson())
                 .owner(request.getOwner())
@@ -53,7 +55,27 @@ public class CompanyServiceImpl implements CompanyService{
     //Дали не трябва вместо по id да търсим по ЕИК
     @Override
     public void editCompanyProfile(UUID companyId, CompanyEditRequest companyRequest) {
+        Company company = getCompanyById(companyId);
 
+//        DTOMapper.mapCompanyToEditRequest(company);
+
+        company = company.toBuilder()
+                .companyName(companyRequest.getCompanyName())
+                .EIK(companyRequest.getEIK())
+                .vatRegistered(companyRequest.isVatRegistered())
+                .vatN(companyRequest.getVatN())
+                .homeTown(companyRequest.getHomeTown())
+                .address(companyRequest.getAddress())
+                .companyIsActive(companyRequest.isCompanyIsActive())
+                .contactEmail(companyRequest.getContactEmail())
+                .responsiblePerson(companyRequest.getResponsiblePerson())
+                .owner(companyRequest.getOwner())
+                .accountant(companyRequest.getOwner())
+                .bank(companyRequest.getBank())
+                .BIC(companyRequest.getBIC())
+                .IBAN(companyRequest.getIBAN())
+                .bankDepartment(companyRequest.getBankDepartment())
+                .build();
     }
 
 

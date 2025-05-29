@@ -34,6 +34,8 @@ public class CompanyEditRequest {
     @NotBlank
     private String address;
 
+    private boolean companyIsActive;
+
     @Email
     private String contactEmail;
 
