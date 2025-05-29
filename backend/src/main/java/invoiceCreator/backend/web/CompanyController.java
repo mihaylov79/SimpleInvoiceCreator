@@ -4,12 +4,10 @@ import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.company.service.CompanyServiceImpl;
 import invoiceCreator.backend.web.dto.CompanyEditRequest;
 import invoiceCreator.backend.web.mapper.DTOMapper;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -30,5 +28,13 @@ public class CompanyController {
         Company company = companyService.getCompanyById(companyId);
         CompanyEditRequest filledForm = DTOMapper.mapCompanyToEditRequest(company);
         return ResponseEntity.ok(filledForm);
+    }
+
+    @PutMapping("/edit/{companyId}")
+    public ResponseEntity<Void>editCompanyDetails(@PathVariable UUID companyId,
+                                                  @Valid @RequestBody CompanyEditRequest editRequest){
+
+        companyService.editCompanyProfile(companyId,editRequest);
+        return ResponseEntity.noContent().build();
     }
 }
