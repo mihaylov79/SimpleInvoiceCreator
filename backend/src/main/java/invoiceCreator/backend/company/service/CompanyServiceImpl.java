@@ -6,7 +6,6 @@ import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.company.repository.CompanyRepository;
 import invoiceCreator.backend.web.dto.CompanyEditRequest;
 import invoiceCreator.backend.web.dto.CreateCompanyRequest;
-import invoiceCreator.backend.web.mapper.DTOMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -76,6 +75,8 @@ public class CompanyServiceImpl implements CompanyService{
                 .IBAN(companyRequest.getIBAN())
                 .bankDepartment(companyRequest.getBankDepartment())
                 .build();
+
+        repository.save(company);
     }
 
 
