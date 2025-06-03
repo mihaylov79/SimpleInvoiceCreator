@@ -14,13 +14,20 @@ body{
 .formContainer {
 
     display: block;
-    gap: 1em;
+    width: 100%;
+    max-width: 20em;
     background-color:#0faf81;
     border-radius: 0.3em;
     box-shadow: 0 0 1em 0.2em rgb(0,0,0,0.2);
     padding: 1.5em;
     margin: 0 auto;
     font: 1.1em 'Raleway';
+}
+
+.fieldContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 h2 {
@@ -37,7 +44,14 @@ form {
 }
 
 .formContainer label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     margin-right: 0.5em;
+}
+
+.fieldContainer label {
+    margin-bottom: 0.5em;
 }
 
 .fieldContainer input[type="submit"] {
@@ -45,9 +59,11 @@ form {
     color:#0a976d;
     box-shadow: 0 0 1em 0.2em rgb(0,0,0,0.2);
     width: 100%;
+    height: 2.5em;
     padding: 0.25em 2em;
     border: none;
     border-radius: 0.3em;
+    margin-top: 1.5em;
     font: 1em 'Raleway';
    
 }
@@ -64,7 +80,8 @@ form {
 .fieldContainer input[type="date"],
 .fieldContainer input[type="password"] {
 
-    height: 1.8em;
+    height: 2.5em;
+    width: 100%;
     background-color: #a7e9db;
     border: none;
     color: #458672;
@@ -82,3 +99,18 @@ form {
      border-radius: 0.3em;
     border: none;
 }
+
+.remember {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5em;
+}
+.remember label {
+    margin-left: 55%;
+    margin-bottom: 0;
+    /* За да не е разтегнат, сложи: */
+    white-space: nowrap; /* да не се пренася */
+    cursor: pointer;
+}
+

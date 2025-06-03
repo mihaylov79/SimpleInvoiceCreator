@@ -47,8 +47,8 @@ import styles from "./LoginForm.module.css";
                            value={values.password}
                            onChange={changeHandler} />
                </div>
-               <div className= {styles.fieldContainer}>
-                  <label htmlFor={styles.remember}>Запомни ме</label>
+               <div className= {`${styles.fieldContainer} ${styles.remember}`}>
+                  <label htmlFor="remember">Запомни ме</label>
                   <input type="checkbox"
                            id="remember"
                            name="remember"

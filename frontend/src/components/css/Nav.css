@@ -5,7 +5,7 @@ body{
     padding: 0;
     /*width: 100vw;*/
     height: 100vh;
-    box-shadow: 0 0 1em 0.2em rgb(0,0,0,0.2);
+    /*box-shadow: 0 0 1em 0.2em rgb(0,0,0,0.2);*/
 
 }
 .nav-container {
@@ -41,4 +41,52 @@ img {
     margin: 0 auto;
     width: 40vw;
     height: auto;
+}
+
+.dropDown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropBtn {
+    cursor: pointer;
+    padding: 8px;
+    color: #a0e6d7;
+    /*font-weight: bold;*/
+}
+
+.dropContent {
+    display: none;
+    position: absolute;
+    top: 100%;
+    margin-top: 0.5em;
+    left: 0;
+    background-color: #0a976d;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 999;
+    list-style: none;
+    padding: 0;
+    border-radius: 0.3em;
+    /*margin: 0;*/
+}
+
+.dropContent li {
+    border-bottom: 1px solid #ddd;
+}
+
+.dropContent li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #a0e6d7 ;
+}
+
+.dropContent li a:hover {
+    background-color: #0faf81;
+    border-radius: 0.3em;
+}
+
+.dropDown:hover .dropContent {
+    display: block;
 }
