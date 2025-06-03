@@ -6,8 +6,10 @@ import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.company.repository.CompanyRepository;
 import invoiceCreator.backend.web.dto.CompanyEditRequest;
 import invoiceCreator.backend.web.dto.CreateCompanyRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -96,8 +98,8 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
-    public <List> Company showAllCompanies() {
-        return null;
+    public List<Company> showAllCompanies() {
+        return repository.findAll(Sort.by("companyName"));
     }
 
     @Override

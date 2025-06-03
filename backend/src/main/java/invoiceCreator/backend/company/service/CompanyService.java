@@ -4,6 +4,7 @@ import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.web.dto.CompanyEditRequest;
 import invoiceCreator.backend.web.dto.CreateCompanyRequest;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface CompanyService {
@@ -18,7 +19,7 @@ public interface CompanyService {
 
     void removeEmployee();
 
-    <List>Company showAllCompanies();
+    List<Company> showAllCompanies();
 
     Company getCompanyById(UUID companyId);
 

@@ -3,12 +3,14 @@ package invoiceCreator.backend.web;
 import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.company.service.CompanyServiceImpl;
 import invoiceCreator.backend.web.dto.CompanyEditRequest;
+import invoiceCreator.backend.web.dto.CreateCompanyRequest;
 import invoiceCreator.backend.web.mapper.DTOMapper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -21,6 +23,11 @@ public class CompanyController {
     @Autowired
     public CompanyController(CompanyServiceImpl companyService) {
         this.companyService = companyService;
+    }
+
+    @GetMapping("/new-company")
+    public ResponseEntity<CreateCompanyRequest>addNewCompany(){
+        return ResponseEntity.ok(new CreateCompanyRequest());
     }
 
     @GetMapping("/edit/{companyId}")
@@ -36,5 +43,11 @@ public class CompanyController {
 
         companyService.editCompanyProfile(companyId,editRequest);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Company>> showCompanyList(){
+        List<Company> allCompanies= companyService.showAllCompanies();
+        return ResponseEntity.ok(allCompanies);
     }
 }
