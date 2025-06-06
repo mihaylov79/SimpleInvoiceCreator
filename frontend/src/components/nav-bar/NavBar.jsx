@@ -12,7 +12,7 @@ export default function NavBar(){
                     <ul className="dropContent">
                         <li><Link to="/api/v1.0/companies/create">Добави нова</Link></li>
                         {/*<li><Link to="/api/v1.0/companies/edit/{companyId}">Редактиране</Link></li>*/}
-                        <li><Link to="/api/v1.0/companies/list">Всички</Link></li>
+                        <li><Link to="/companies/list">Всички</Link></li>
                     </ul>
                 </div>
                 <Link to="/register">Регистрация</Link>
