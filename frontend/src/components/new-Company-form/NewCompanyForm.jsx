@@ -94,13 +94,13 @@ export default function NewCompanyForm(){
                     <input
                     name="EIK"
                     value={formData.EIK}
-                    onChange={changeHandler} required pattern="\d{10}" /><br />
+                    onChange={changeHandler} required /><br />
 
                     <label>
                     <input
                     type="checkbox"
                     name="vatRegistered"
-                    value={formData.vatRegistered}
+                    checked={formData.vatRegistered}
                     onChange={changeHandler} /> Регистрация по ЗДДС</label><br/>
 
                     <label>ЗДДС Номер:</label><br/>

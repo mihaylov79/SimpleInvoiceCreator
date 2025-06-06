@@ -16,7 +16,6 @@ import java.util.UUID;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5174")
 @RequestMapping("/api/v1.0/companies")
 public class CompanyController {
 
