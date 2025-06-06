@@ -29,10 +29,11 @@ export default function CompaniesList() {
     },[]);
 
     if (loading){
-        return <ClipLoader color= {"#a7e9db"} size = {35} />
+        return <ClipLoader color= {"#a7e9db"} size = {50} />
     }
 
     if (!loading && companies.length === 0) {
+
         return <p>Няма намерени фирми.</p>;
     }
 

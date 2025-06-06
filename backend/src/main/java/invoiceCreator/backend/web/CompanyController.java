@@ -16,7 +16,8 @@ import java.util.UUID;
 
 
 @RestController
-@RequestMapping("/api/v1.0/companies/")
+@CrossOrigin(origins = "http://localhost:5174")
+@RequestMapping("/api/v1.0/companies")
 public class CompanyController {
 
     private final CompanyServiceImpl companyService;
@@ -34,9 +35,8 @@ public class CompanyController {
     @PostMapping("/new-company")
     public ResponseEntity<String> addNewCompany(@Valid @RequestBody CreateCompanyRequest request){
 
-        companyService.createNewCompany(request);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body("Фирмата е създадена успешно!");
+            companyService.createNewCompany(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Фирмата е създадена успешно!");
     }
 
     @GetMapping("/edit/{companyId}")
@@ -53,7 +53,6 @@ public class CompanyController {
         companyService.editCompanyProfile(companyId,editRequest);
         return ResponseEntity.noContent().build();
     }
-
     @GetMapping("/list")
     public ResponseEntity<List<Company>> showCompanyList(){
         List<Company> allCompanies= companyService.showAllCompanies();
