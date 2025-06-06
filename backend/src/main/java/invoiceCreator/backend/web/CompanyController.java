@@ -7,6 +7,7 @@ import invoiceCreator.backend.web.dto.CreateCompanyRequest;
 import invoiceCreator.backend.web.mapper.DTOMapper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +26,17 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
-    @GetMapping("/new-company")
-    public ResponseEntity<CreateCompanyRequest>addNewCompany(){
-        return ResponseEntity.ok(new CreateCompanyRequest());
+//    @GetMapping("/new-company")
+//    public ResponseEntity<CreateCompanyRequest>addNewCompany(){
+//        return ResponseEntity.ok(new CreateCompanyRequest());
+//    }
+
+    @PostMapping("/new-company")
+    public ResponseEntity<String> addNewCompany(@Valid @RequestBody CreateCompanyRequest request){
+
+        companyService.createNewCompany(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Фирмата е създадена успешно!");
     }
 
     @GetMapping("/edit/{companyId}")
