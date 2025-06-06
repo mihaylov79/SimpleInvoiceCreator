@@ -32,6 +32,10 @@ export default function CompaniesList() {
         return <ClipLoader color= {"#a7e9db"} size = {35} />
     }
 
+    if (!loading && companies.length === 0) {
+        return <p>Няма намерени фирми.</p>;
+    }
+
     return (
         <div>
             <h2>Списък с фирми</h2>
