@@ -4,7 +4,7 @@ import {ClipLoader} from "react-spinners";
 export default function CompaniesList() {
     const [companies, setCompanies] = useState([])
     const [loading, setLoading] = useState(true)
-    const baseUrl = "/api/companies/list";
+    const baseUrl = "http://localhost:8080/api/v1.0/companies/list";
 
     useEffect(() => {
         const fetchCompanies = async () => {

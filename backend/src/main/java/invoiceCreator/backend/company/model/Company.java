@@ -1,6 +1,5 @@
 package invoiceCreator.backend.company.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import invoiceCreator.backend.invoice.model.Invoice;
 import invoiceCreator.backend.user.model.User;
 import jakarta.persistence.*;
@@ -74,13 +73,12 @@ public class Company {
     @Column
     private String bankDepartment;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "employerCompany")
     private List<User> employees = new ArrayList<>();
-    @JsonIgnore
+
     @OneToMany(mappedBy = "billTo")
     private List<Invoice> incomingInvoices = new ArrayList<>();
-    @JsonIgnore
+
     @OneToMany(mappedBy = "payTo")
     private List<Invoice> outgoingInvoices = new ArrayList<>();
 
