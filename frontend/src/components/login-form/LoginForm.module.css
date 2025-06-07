@@ -113,4 +113,26 @@ form {
     white-space: nowrap; /* да не се пренася */
     cursor: pointer;
 }
+.vat label {
+    margin-left: 30%;
+    margin-bottom: 0;
+    /* За да не е разтегнат, сложи: */
+    white-space: nowrap; /* да не се пренася */
+    cursor: pointer;
+}
+
+.createCompanyBtn {
+    margin-top: 0.5em;
+    background: #a7e9db;
+    color: #458672;
+    border-radius: 0.5em;
+    padding: 0.5em 2em;
+    font: 1em 'Raleway';
+    width: 100%;
+}
+
+.createCompanyBtn:hover{
+    box-shadow: 0 0 1em 0.2em rgb(0,0,0,0.2);
+    font-weight: 700;
+}
 

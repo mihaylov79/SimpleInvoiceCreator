@@ -159,7 +159,7 @@ export default function NewCompanyForm(){
                                 onChange={changeHandler}/><br/>
                     </div>
                     <div>
-                    <button type="submit" disabled={loading}>
+                    <button className={styles.createCompanyBtn} type="submit" disabled={loading}>
                         {loading ? "Изпращане..." : "Създай фирма"}
                     </button>
                     </div>
