@@ -1,9 +1,9 @@
 package invoiceCreator.backend.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import invoiceCreator.backend.user.model.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -15,8 +15,9 @@ public class CreateCompanyRequest {
     @Length(max = 60 , message = "Името не може да надвишава 60 символа")
     private String companyName;
 
-    @NotBlank
-    @Pattern(regexp = "//d{10}", message = "Полето трябва да съдържа 10 цифри")
+    @NotBlank(message = "ЕИК е задължително поле")
+    @Size(min = 9, max = 13, message = "ЕИК трябва да е между 9 и 13 символа")
+    @JsonProperty("EIK")
     private String EIK;
 
     private boolean vatRegistered;

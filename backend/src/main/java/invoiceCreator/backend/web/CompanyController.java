@@ -16,6 +16,7 @@ import java.util.UUID;
 
 
 @RestController
+@CrossOrigin("http://localhost:5173")
 @RequestMapping("/api/v1.0/companies")
 public class CompanyController {
 
@@ -33,7 +34,6 @@ public class CompanyController {
 
     @PostMapping("/new-company")
     public ResponseEntity<String> addNewCompany(@Valid @RequestBody CreateCompanyRequest request){
-
             companyService.createNewCompany(request);
             return ResponseEntity.status(HttpStatus.CREATED).body("Фирмата е създадена успешно!");
     }
