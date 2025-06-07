@@ -1,5 +1,4 @@
 package invoiceCreator.backend.company.model;
-
 import invoiceCreator.backend.invoice.model.Invoice;
 import invoiceCreator.backend.user.model.User;
 import jakarta.persistence.*;
