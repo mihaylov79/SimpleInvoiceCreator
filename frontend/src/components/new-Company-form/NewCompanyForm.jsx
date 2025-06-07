@@ -1,4 +1,5 @@
 import {useState} from "react";
+import styles from "../login-form/LoginForm.module.css";
 
 
 export default function NewCompanyForm(){
@@ -78,73 +79,94 @@ export default function NewCompanyForm(){
     };
 
     return(
-        <div>
-            <div>
+        <div className= {styles.formMainContainer}>
+            <div className= {styles.formContainer}>
                 <h2>Добавете нова фирма</h2>
-            </div>
+
             <div>
                 <form onSubmit={submitHandler}>
-                    <label>Име на фирмата:</label><br />
-                    <input
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={changeHandler} required/><br />
+                    <div className= {styles.fieldContainer}>
+                        <label>Име на фирмата:</label><br />
+                        <input type="text"
+                               id="companyName"
+                                name="companyName"
+                                value={formData.companyName}
+                                onChange={changeHandler} required/><br />
+                    </div>
+                    <div className= {styles.fieldContainer}>
+                        <label>ЕИК:</label><br />
+                        <input type="text"
+                               id="EIK"
+                                name="EIK"
+                                value={formData.EIK}
+                                onChange={changeHandler} required /><br />
+                    </div>
+                    <div className= {styles.fieldContainer}>
+                        <label>
+                        <input type="checkbox"
+                               id="vatRegistered"
+                                name="vatRegistered"
+                                checked={formData.vatRegistered}
+                                onChange={changeHandler} /> Регистрация по ЗДДС</label><br/>
+                    </div>
+                    <div className= {styles.fieldContainer}>
+                        <label>ЗДДС Номер:</label><br/>
+                        <input type="text"
+                               id="vatN"
+                                name="vatN"
+                                value={formData.vatN}
+                                onChange={changeHandler}/><br/>
+                    </div>
 
-                    <label>ЕИК:</label><br />
-                    <input
-                    name="EIK"
-                    value={formData.EIK}
-                    onChange={changeHandler} required /><br />
-
-                    <label>
-                    <input
-                    type="checkbox"
-                    name="vatRegistered"
-                    checked={formData.vatRegistered}
-                    onChange={changeHandler} /> Регистрация по ЗДДС</label><br/>
-
-                    <label>ЗДДС Номер:</label><br/>
-                    <input
-                    name="vatN"
-                    value={formData.vatN}
-                    onChange={changeHandler}/><br/>
-
-                    <label>Град:</label><br/>
-                    <input
-                    name="homeTown"
-                    value={formData.homeTown}
-                    onChange={changeHandler}/><br/>
-
-                    <label>Адрес:</label><br/>
-                    <input
-                    name="address"
-                    value={formData.address}
-                    onChange={changeHandler} required /><br/>
-
-                    <label>Поща:</label><br/>
-                    <input
-                    name="contactEmail"
-                    value={formData.contactEmail}
-                    onChange={changeHandler}/><br/>
-
-                    <label>МОЛ:</label><br/>
-                    <input
-                     name="responsiblePerson"
-                     value={formData.responsiblePerson}
-                     onChange={changeHandler} required /><br/>
-
-                    <label>IBAN:</label><br/>
-                    <input
-                        name="IBAN"
-                        value={formData.IBAN}
-                        onChange={changeHandler}/><br/>
-
+                    <div className= {styles.fieldContainer}>
+                        <label>Град:</label><br/>
+                        <input type="text"
+                               id="homeTown"
+                                name="homeTown"
+                                value={formData.homeTown}
+                                onChange={changeHandler}/><br/>
+                    </div>
+                    <div className= {styles.fieldContainer}>
+                        <label>Адрес:</label><br/>
+                        <input type="text"
+                               id="address"
+                                name="address"
+                                value={formData.address}
+                                onChange={changeHandler} required /><br/>
+                    </div>
+                    <div className= {styles.fieldContainer}>
+                        <label>Поща:</label><br/>
+                        <input type="email"
+                               id="contactEmail"
+                                name="contactEmail"
+                                value={formData.contactEmail}
+                                onChange={changeHandler}/><br/>
+                    </div>
+                    <div className= {styles.fieldContainer}>
+                        <label>МОЛ:</label><br/>
+                        <input type="text"
+                               id="responsiblePerson"
+                                 name="responsiblePerson"
+                                 value={formData.responsiblePerson}
+                                 onChange={changeHandler} required /><br/>
+                    </div>
+                    <div className= {styles.fieldContainer}>
+                        <label>IBAN:</label><br/>
+                        <input type="text"
+                               id="IBAN"
+                                name="IBAN"
+                                value={formData.IBAN}
+                                onChange={changeHandler}/><br/>
+                    </div>
+                    <div>
                     <button type="submit" disabled={loading}>
                         {loading ? "Изпращане..." : "Създай фирма"}
                     </button>
+                    </div>
                 </form>
                 {error && <p style={{ color: "red" }}>⚠ {error}</p>}
                 {success && <p style={{ color: "green" }}>✅ {success}</p>}
+            </div>
             </div>
         </div>
     );
