@@ -3,6 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/java/invoiceCreator/backend/.env
+.env
 
 ### STS ###
 .apt_generated
@@ -15,6 +17,8 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+.idea/dataSources
+.idea/dataSources.xml
 *.iws
 *.iml
 *.ipr
@@ -31,6 +35,5 @@ build/
 
 ### VS Code ###
 .vscode/
-src/main/java/invoiceCreator/backend/.env
-.env
-.idea/dataSources.xml
+
+
