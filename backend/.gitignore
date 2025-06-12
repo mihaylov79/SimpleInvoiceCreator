@@ -17,6 +17,7 @@ src/main/java/invoiceCreator/backend/.env
 
 ### IntelliJ IDEA ###
 .idea
+.idea/
 .idea/dataSources
 .idea/dataSources.xml
 *.iws
