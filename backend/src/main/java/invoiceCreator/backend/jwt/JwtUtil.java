@@ -22,8 +22,8 @@ public class JwtUtil {
     private SecretKey key;
 
     public JwtUtil(Dotenv dotenv) {
-        this.jwtSecret = dotenv.get("${JWT_SECRET}");
-        this.jwtExpiration = Integer.parseInt(dotenv.get("${JWT_EXPIRATION}"));
+        this.jwtSecret = dotenv.get("JWT_SECRET");
+        this.jwtExpiration = Integer.parseInt(dotenv.get("$JWT_EXPIRATION"));
         this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 
