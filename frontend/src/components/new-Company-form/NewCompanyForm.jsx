@@ -101,13 +101,13 @@ export default function NewCompanyForm(){
                                 value={formData.EIK}
                                 onChange={changeHandler} required /><br />
                     </div>
-                    <div className= {styles.fieldContainer}>
-                        <label>
+                    <div className= {`${styles.fieldContainer} ${styles.vatContainer}`}>
+                        <label className={styles.checkboxLabel}> Регистрация по ЗДДС
                         <input type="checkbox"
                                id="vatRegistered"
                                 name="vatRegistered"
                                 checked={formData.vatRegistered}
-                                onChange={changeHandler} /> Регистрация по ЗДДС</label><br/>
+                                onChange={changeHandler} /></label><br/>
                     </div>
                     <div className= {styles.fieldContainer}>
                         <label>ЗДДС Номер:</label><br/>

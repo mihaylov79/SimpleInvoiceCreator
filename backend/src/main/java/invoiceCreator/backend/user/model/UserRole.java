@@ -1,6 +1,7 @@
 package invoiceCreator.backend.user.model;
 
 public enum UserRole {
+    GUEST("Гост"),
     USER("Служител"),
     MANAGER("Управител"),
     OWNER("Собственик"),
