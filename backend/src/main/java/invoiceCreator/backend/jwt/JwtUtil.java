@@ -19,7 +19,7 @@ public class JwtUtil {
 
     private final String jwtSecret;
     private final int jwtExpiration;
-    private SecretKey key;
+    private final SecretKey key;
 
     public JwtUtil(Dotenv dotenv) {
         this.jwtSecret = dotenv.get("JWT_SECRET");
