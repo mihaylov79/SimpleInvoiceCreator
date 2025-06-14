@@ -43,6 +43,8 @@ public class SecurityConfig {
         return http.build();
     }
 
+//    Spring Security използва AuthenticationProvider,
+//    за да валидира потребителите при логин (или при проверка на JWT)
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
