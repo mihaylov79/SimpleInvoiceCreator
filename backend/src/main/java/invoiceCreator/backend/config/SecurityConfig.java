@@ -21,14 +21,14 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final UserServiceImpl userService;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationProvider authProvider;
+
 
     @Autowired
-    public SecurityConfig(JwtAuthFilter jwtAuthFilter, UserServiceImpl userService, PasswordEncoder passwordEncoder, AuthenticationProvider authProvider) {
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter, UserServiceImpl userService, PasswordEncoder passwordEncoder) {
         this.jwtAuthFilter = jwtAuthFilter;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
-        this.authProvider = authProvider;
+
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated())
-                .authenticationProvider(authProvider)
+                .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
