@@ -2,8 +2,12 @@ package invoiceCreator.backend.config;
 
 
 import invoiceCreator.backend.jwt.JwtAuthFilter;
+import invoiceCreator.backend.user.model.User;
+import invoiceCreator.backend.user.model.UserRole;
+import invoiceCreator.backend.user.repository.UserRepository;
 import invoiceCreator.backend.user.service.Impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -51,5 +55,25 @@ public class SecurityConfig {
         provider.setUserDetailsService(userService);
         provider.setPasswordEncoder(passwordEncoder);
         return provider;
+    }
+
+
+    //TODO Да създам методи в UserService isEmpty и save
+    // за да избегна подаването директно на репото в Config-a
+    @Bean
+    public CommandLineRunner initializeAdmin (PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        return args -> {
+            if (userRepository.count() == 0) {
+
+                User admin = User.builder()
+                        .username("administrator")
+                        .password(passwordEncoder.encode("admin321"))
+                        .userRole(UserRole.ADMIN)
+                        .active(true)
+                        .build();
+
+                userRepository.save(admin);
+            }
+        };
     }
 }
