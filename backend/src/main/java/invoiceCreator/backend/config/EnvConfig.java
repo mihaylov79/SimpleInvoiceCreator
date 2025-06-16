@@ -9,7 +9,10 @@ public class EnvConfig {
 
     @Bean
     public Dotenv dotenv() {
-        return Dotenv.configure().ignoreIfMissing().load();
+        return Dotenv.configure()
+                     .directory("backend/src/main/java/invoiceCreator/backend")
+                     .ignoreIfMissing()
+                     .load();
     }
 
 
