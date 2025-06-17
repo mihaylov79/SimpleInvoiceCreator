@@ -1,5 +1,6 @@
 package invoiceCreator.backend.user.service.Impl;
 
+import invoiceCreator.backend.common.exceptions.UsernameAlreadyExist;
 import invoiceCreator.backend.security.CustomUserDetails;
 import invoiceCreator.backend.user.model.User;
 import invoiceCreator.backend.user.model.UserRole;
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         Optional<User> optionalUser = repository.findByUsername(request.getUsername());
 
         if (optionalUser.isPresent()) {
-            throw new RuntimeException("Потребител с това потребителско име вече съществува в базата данни!");
+            throw new UsernameAlreadyExist("Потребител с това потребителско име вече съществува в базата данни!");
         }
 
         User user = User.builder()
