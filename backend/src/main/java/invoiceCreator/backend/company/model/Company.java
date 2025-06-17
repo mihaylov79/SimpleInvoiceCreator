@@ -72,13 +72,13 @@ public class Company {
     @Column
     private String bankDepartment;
 
-    @OneToMany(mappedBy = "employerCompany")
+    @OneToMany(mappedBy = "employerCompany",fetch = FetchType.EAGER)
     private List<User> employees = new ArrayList<>();
 
-    @OneToMany(mappedBy = "billTo")
+    @OneToMany(mappedBy = "billTo", fetch = FetchType.EAGER)
     private List<Invoice> incomingInvoices = new ArrayList<>();
 
-    @OneToMany(mappedBy = "payTo")
+    @OneToMany(mappedBy = "payTo", fetch = FetchType.EAGER)
     private List<Invoice> outgoingInvoices = new ArrayList<>();
 
 

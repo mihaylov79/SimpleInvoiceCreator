@@ -38,6 +38,9 @@ public class User {
     @Column
     private LocalDate birthDate;
 
+    @Column
+    private String email;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
