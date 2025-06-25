@@ -6,7 +6,7 @@ import invoiceCreator.backend.user.model.User;
 import invoiceCreator.backend.user.model.UserRole;
 import invoiceCreator.backend.user.repository.UserRepository;
 import invoiceCreator.backend.user.service.UserService;
-import invoiceCreator.backend.web.dto.RegisterRequest;
+import invoiceCreator.backend.web.dto.UserRegisterRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 
     @Override
-    public void registerUser(RegisterRequest request) {
+    public void registerUser(UserRegisterRequest request) {
         Optional<User> optionalUser = repository.findByUsername(request.getUsername());
 
         if (optionalUser.isPresent()) {

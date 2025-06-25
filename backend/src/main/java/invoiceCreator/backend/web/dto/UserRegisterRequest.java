@@ -9,7 +9,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class RegisterRequest {
+public class UserRegisterRequest {
 
     @NotBlank(message = "Това поле не може да бъде празно")
     private String username;

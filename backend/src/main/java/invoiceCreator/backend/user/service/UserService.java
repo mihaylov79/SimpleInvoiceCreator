@@ -1,8 +1,8 @@
 package invoiceCreator.backend.user.service;
 
-import invoiceCreator.backend.web.dto.RegisterRequest;
+import invoiceCreator.backend.web.dto.UserRegisterRequest;
 
 public interface UserService {
 
-    void registerUser(RegisterRequest request);
+    void registerUser(UserRegisterRequest request);
 }
