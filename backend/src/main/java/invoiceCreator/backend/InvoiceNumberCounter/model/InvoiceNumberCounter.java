@@ -31,5 +31,7 @@ public class InvoiceNumberCounter {
     @Column(name = "last_number", nullable = false)
     private int lastUsedNumber;
 
-
+    public void setLastUsedNumber(int lastUsedNumber) {
+        this.lastUsedNumber = lastUsedNumber;
+    }
 }
