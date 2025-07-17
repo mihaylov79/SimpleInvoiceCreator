@@ -3,9 +3,7 @@ package invoiceCreator.backend.invoiceLine.model;
 import invoiceCreator.backend.invoice.model.Invoice;
 import invoiceCreator.backend.item.model.Item;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -13,6 +11,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "invoice_lines")
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class InvoiceLine {
@@ -38,5 +37,7 @@ public class InvoiceLine {
     @Column(name = "total_line_price")
     private BigDecimal totalLinePrice;
 
-
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
 }
