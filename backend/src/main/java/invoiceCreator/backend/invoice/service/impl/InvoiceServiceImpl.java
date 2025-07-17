@@ -8,7 +8,6 @@ import invoiceCreator.backend.invoiceLine.model.InvoiceLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.event.InvocationEvent;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -32,9 +31,9 @@ public class InvoiceServiceImpl implements InvoiceService {
                 .totalLinePrice(l.getItem().getUnitPrice().multiply(BigDecimal.valueOf(l.getQuantity())))
                 .build()).toList();
 
-//        BigDecimal total = lines.stream()
-//                .map(InvoiceLine::getTotalLinePrice)
-//                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal total = lines.stream()
+                .map(InvoiceLine::getTotalLinePrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
 
         Invoice invoice = Invoice.builder()
