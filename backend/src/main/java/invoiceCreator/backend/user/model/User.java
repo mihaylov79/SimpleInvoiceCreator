@@ -55,4 +55,9 @@ public class User {
     @OneToMany(mappedBy = "owner")
     private List<Company> ownedCompanies = new ArrayList<>();
 
+    //TODO Да уточня ownedCompanies и employerCompany (кое поле за какво се отнася) -
+    // за да преценя как да подавам payTo в createInvoice метода
+    // (един user може да е свързам с много компании и обратно,
+    // но не е задължително да е owner)
+
 }

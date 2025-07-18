@@ -52,8 +52,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         //TODO Да проверя ако firstName или LastName не бъдат попълнение ще хвърли ли грешка!
     }
 
-    public void getUserByUsername(String username) {
-        repository.findByUsername(username)
+    public User getUserByUsername(String username) {
+        return repository.findByUsername(username)
                   .orElseThrow(()-> new RuntimeException("Потребител с потребителско име : %s не съществува."
                   .formatted(username)));
     }

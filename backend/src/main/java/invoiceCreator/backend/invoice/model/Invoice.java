@@ -62,7 +62,7 @@ public class Invoice {
 
 
     @ManyToOne
-    @JoinColumn(name = "book_number_id")
+    @JoinColumn(name = "book_number_id", nullable = false)
     private InvoiceBook bookNumber;
 
     @OneToMany(mappedBy = "invoice")
