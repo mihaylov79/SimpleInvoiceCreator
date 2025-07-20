@@ -48,6 +48,9 @@ public class User {
     @Column
     private boolean active;
 
+    //Ако променя релацията на ManyToMany - ще имам възможност да свържа потребител с повече
+    // от една компания , но трябва да променя и регистър метода и фронт енд-а
+    // защото тогава това няма да е поле а List с фирми.
     @ManyToOne
     @JoinColumn(name = "employer_company_id")
     private Company employerCompany;
