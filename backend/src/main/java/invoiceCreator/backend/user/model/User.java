@@ -48,6 +48,20 @@ public class User {
     @Column
     private boolean active;
 
+    //TODO да добавя полето в методите и да помисля дали да добавям
+    // employerCompany кум connectedCompanies
+    @ManyToOne
+    @JoinColumn(name = "active_company_id")
+    private Company activeCompany;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_connected_companies",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id")
+    )
+    List<Company>connectedCompanies = new ArrayList<>();
+
     //Ако променя релацията на ManyToMany - ще имам възможност да свържа потребител с повече
     // от една компания , но трябва да променя и регистър метода и фронт енд-а
     // защото тогава това няма да е поле а List с фирми.
@@ -57,6 +71,10 @@ public class User {
 
     @OneToMany(mappedBy = "owner")
     private List<Company> ownedCompanies = new ArrayList<>();
+
+    public void setActiveCompany(Company activeCompany) {
+        this.activeCompany = activeCompany;
+    }
 
     //TODO Да уточня ownedCompanies и employerCompany (кое поле за какво се отнася) -
     // за да преценя как да подавам payTo в createInvoice метода
