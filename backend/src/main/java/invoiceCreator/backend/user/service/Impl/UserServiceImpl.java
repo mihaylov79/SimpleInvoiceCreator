@@ -1,6 +1,7 @@
 package invoiceCreator.backend.user.service.Impl;
 
 import invoiceCreator.backend.common.exceptions.UsernameAlreadyExist;
+import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.security.CustomUserDetails;
 import invoiceCreator.backend.user.model.User;
 import invoiceCreator.backend.user.model.UserRole;
@@ -8,6 +9,8 @@ import invoiceCreator.backend.user.repository.UserRepository;
 import invoiceCreator.backend.user.service.UserService;
 import invoiceCreator.backend.web.dto.UserRegisterRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -56,6 +59,28 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         repository.save(user);
 
         //TODO Да проверя ако firstName или LastName не бъдат попълнение ще хвърли ли грешка!
+    }
+
+    public void changeActiveCompany(Company newActiveCompany){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+
+        User activeUser = getUserByUsername(username);
+
+        if (activeUser.getActiveCompany()== newActiveCompany){
+            throw new RuntimeException("Тази фирма вече е посочена като активна!");
+        }
+
+        if (!activeUser.getConnectedCompanies().contains(newActiveCompany)){
+            throw new RuntimeException("Тази фирма не фигурира във списъка със свързани фирми!");
+        }
+
+        activeUser = activeUser.toBuilder()
+                .activeCompany(newActiveCompany).build();
+
+        repository.save(activeUser);
     }
 
     public User getUserByUsername(String username) {
