@@ -13,11 +13,10 @@ public class CreateInvoiceRequest {
     @NotBlank(message = "Моля уточнете валутата на сделката")
     private CurrencyCode currencyCode;
 
-    @NotBlank(message = "Иберете фирмата която издава ф-ра")
-    private Company payTo;
-
     @NotBlank(message = "Моля изберете фирма получател")
     private Company billTo;
+
+
 
     //TODO не е довърщено трябва да се добавят още полета
 }

@@ -54,7 +54,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         Invoice invoice = Invoice.builder()
                 .invoiceType(invoiceToCreate.getInvoiceType())
                 .billTo(invoiceToCreate.getBillTo())
-                .payTo(currentUser.getEmployerCompany())
+                .payTo(currentUser.getActiveCompany())
                 .paid(invoiceToCreate.isPaid())
                 .baseCurrencyCode(CurrencyCode.BGN)
                 .bookNumber(invoiceToCreate.getBookNumber())

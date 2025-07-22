@@ -7,6 +7,7 @@ import invoiceCreator.backend.user.model.UserRole;
 import invoiceCreator.backend.user.repository.UserRepository;
 import invoiceCreator.backend.user.service.UserService;
 import invoiceCreator.backend.web.dto.UserRegisterRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
@@ -35,6 +37,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             throw new UsernameAlreadyExist("Потребител с това потребителско име вече съществува в базата данни!");
         }
 
+        //TODO Добавяме employerCompany като activeCompany също!
+        // трябва да преценя какво ще се случи ако потребителят смени employerCompany
+        // дали трябва да я премахна от connectedCompanies
         User user = User.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -43,6 +48,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .email(request.getEmail())
                 .birthDate(request.getBirthdate())
                 .employerCompany(request.getCompany())
+                .activeCompany(request.getCompany())
                 .userRole(UserRole.USER)
                 .active(true)
                 .build();
