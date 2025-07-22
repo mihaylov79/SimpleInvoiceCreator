@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         //TODO Да проверя ако firstName или LastName не бъдат попълнение ще хвърли ли грешка!
     }
-
+    @Override
     public void changeActiveCompany(Company newActiveCompany){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         repository.save(activeUser);
     }
-
+    @Override
     public User getUserByUsername(String username) {
         return repository.findByUsername(username)
                   .orElseThrow(()-> new RuntimeException("Потребител с потребителско име : %s не съществува."
