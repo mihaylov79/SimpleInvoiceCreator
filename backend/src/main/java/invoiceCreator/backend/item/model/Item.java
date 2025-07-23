@@ -1,5 +1,6 @@
 package invoiceCreator.backend.item.model;
 
+import invoiceCreator.backend.common.CurrencyCode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,14 @@ public class Item {
     @Column
     private String name;
 
+    @Column
+    private String description;
+
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private CurrencyCode currency;
 
 }
