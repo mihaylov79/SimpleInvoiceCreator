@@ -1,10 +1,8 @@
 package invoiceCreator.backend.book.model;
 
+import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.invoice.model.Invoice;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -27,6 +25,14 @@ public class InvoiceBook {
     @Column
     private boolean active;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
+
     @OneToMany(mappedBy = "bookNumber")
     List<Invoice> bookInvoices = new ArrayList<>();
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 }
