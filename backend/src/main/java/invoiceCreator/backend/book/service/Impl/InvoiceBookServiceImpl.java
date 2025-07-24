@@ -4,8 +4,8 @@ import invoiceCreator.backend.book.model.InvoiceBook;
 import invoiceCreator.backend.book.repository.InvoiceBookRepository;
 import invoiceCreator.backend.book.service.InvoiceBookService;
 import invoiceCreator.backend.company.model.Company;
-import invoiceCreator.backend.invoice.model.Invoice;
 import invoiceCreator.backend.web.dto.CreateBookRequest;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -40,9 +40,9 @@ public class InvoiceBookServiceImpl implements InvoiceBookService {
 
     @Override
     public List<InvoiceBook> getCompanyBooksList(Company company) {
-        return List.of();
+        return repository.findAllByCompany(company, Sort.by(Sort.Order.by("bookN")));
 
-        //TODO тази заявка трябва да бъде към Company -
-        // вероятно трябва да добавя CompanyService за нея.
+        //TODO да добавя sort
+
     }
 }
