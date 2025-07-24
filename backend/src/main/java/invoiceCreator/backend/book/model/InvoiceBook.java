@@ -18,11 +18,14 @@ public class InvoiceBook {
     @Id
     private UUID id;
 
-    @Column
+    @Column(unique = true,nullable = false)
     private String bookN;
 
     @Column
     private String description;
+
+    @Column
+    private boolean active;
 
     @OneToMany(mappedBy = "bookNumber")
     List<Invoice> bookInvoices = new ArrayList<>();
