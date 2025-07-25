@@ -65,7 +65,7 @@ public class Invoice {
     @JoinColumn(name = "book_number_id", nullable = false)
     private InvoiceBook bookNumber;
 
-    @OneToMany(mappedBy = "invoice")
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     List<InvoiceLine>lines = new ArrayList<>();
 
 }
