@@ -7,7 +7,7 @@ import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.web.dto.CreateBookRequest;
 import org.springframework.data.domain.Sort;
 
-import java.util.List;
+import java.util.List;;
 
 public class InvoiceBookServiceImpl implements InvoiceBookService {
 
@@ -42,7 +42,17 @@ public class InvoiceBookServiceImpl implements InvoiceBookService {
     public List<InvoiceBook> getCompanyBooksList(Company company) {
         return repository.findAllByCompany(company, Sort.by(Sort.Order.by("bookN")));
 
-        //TODO да добавя sort
 
+    }
+
+
+    public String suggestBookN(Company company){
+        List<InvoiceBook>companyBooks = getCompanyBooksList(company);
+        int maxN = companyBooks.stream()
+                .filter(c -> c.getBookN().matches("\\d+"))
+                .map(c -> Integer.parseInt(c.getBookN()))
+                .max(Integer::compareTo).orElse(0);
+
+        return String.format("%03d",maxN +1);
     }
 }
