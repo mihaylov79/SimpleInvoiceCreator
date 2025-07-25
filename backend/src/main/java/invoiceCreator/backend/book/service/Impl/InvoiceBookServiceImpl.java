@@ -7,6 +7,7 @@ import invoiceCreator.backend.company.model.Company;
 import invoiceCreator.backend.user.model.User;
 import invoiceCreator.backend.user.service.UserService;
 import invoiceCreator.backend.web.dto.CreateBookRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
@@ -22,6 +23,7 @@ public class InvoiceBookServiceImpl implements InvoiceBookService {
     private final InvoiceBookRepository repository;
     private final UserService userService;
 
+    @Autowired
     public InvoiceBookServiceImpl(InvoiceBookRepository repository, UserService userService) {
         this.repository = repository;
         this.userService = userService;
