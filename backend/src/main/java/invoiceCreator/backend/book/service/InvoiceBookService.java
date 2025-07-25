@@ -18,4 +18,6 @@ public interface InvoiceBookService {
     void markBookAsActive();
 
     List<InvoiceBook>getCompanyBooksList(Company company);
+
+    String suggestBookN(Company company);
 }
