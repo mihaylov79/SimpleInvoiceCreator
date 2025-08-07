@@ -5,6 +5,8 @@ import invoiceCreator.backend.invoice.model.Invoice;
 import invoiceCreator.backend.invoice.repository.InvoiceRepository;
 import invoiceCreator.backend.invoice.service.InvoiceService;
 import invoiceCreator.backend.invoiceLine.model.InvoiceLine;
+import invoiceCreator.backend.item.model.Item;
+import invoiceCreator.backend.item.service.Impl.ItemServiceImpl;
 import invoiceCreator.backend.user.model.User;
 import invoiceCreator.backend.user.service.Impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,13 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     private final InvoiceRepository repository;
     private final UserServiceImpl userService;
+    private final ItemServiceImpl itemService;
 
     @Autowired
-    public InvoiceServiceImpl(InvoiceRepository repository, UserServiceImpl userService) {
+    public InvoiceServiceImpl(InvoiceRepository repository, UserServiceImpl userService, ItemServiceImpl itemService) {
         this.repository = repository;
         this.userService = userService;
+        this.itemService = itemService;
     }
 
     @Override
@@ -39,12 +43,20 @@ public class InvoiceServiceImpl implements InvoiceService {
             throw new RuntimeException("За да издадете фактура трябва да зададете книга!");
         }
 
-        List<InvoiceLine> lines = invoiceToCreate.getLines().stream().map(l-> InvoiceLine.builder()
-                .item(l.getItem())
-                .quantity(l.getQuantity())
-                .unitPrice(l.getItem().getUnitPrice())
-                .totalLinePrice(l.getItem().getUnitPrice().multiply(BigDecimal.valueOf(l.getQuantity())))
-                .build()).toList();
+        List<InvoiceLine> lines = invoiceToCreate.getLines().stream().map(l-> {
+
+            Item item = itemService.findItemById(l.getId());
+
+            BigDecimal itemUntPrice = item.getUnitPrice();
+            BigDecimal linePrice = itemUntPrice.multiply(BigDecimal.valueOf(l.getQuantity()));
+
+            return  InvoiceLine.builder()
+                    .item(l.getItem())
+                    .quantity(l.getQuantity())
+                    .unitPrice(l.getItem().getUnitPrice())
+                    .totalLinePrice(linePrice)
+                    .build();
+        }).toList();
 
         BigDecimal total = lines.stream()
                 .map(InvoiceLine::getTotalLinePrice)
